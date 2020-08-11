@@ -41,8 +41,6 @@ import os.path
 class WlcOwa:
     """QGIS Plugin Implementation."""
 
-    
-
     def __init__(self, iface):
         """Constructor.
 
@@ -80,8 +78,8 @@ class WlcOwa:
         """
 
         self.dlg.selectCriteria.clear()
-        self.dlg.criteriaTable.clear()
-        self.dlg.orderTable.clear()
+        self.dlg.criteriaTable.clearContents()
+        self.dlg.orderTable.clearContents()
         self.dlg.selectCriteria.addItems([str(x.name()) for x in
             self.dlg.inputBox.currentLayer().fields() if x.isNumeric()])
 
