@@ -9,6 +9,8 @@
         begin                : 2020-07-17
         git sha              : $Format:%H$
         copyright            : (C) 2020 by Gregory Huang
+                               Special thanks to Ben Wirf (ben.wirf@gmail.com)
+                               for his help on QT Implementation.
         email                : gregory.huang@ryerson.ca
  ***************************************************************************/
 
@@ -83,8 +85,14 @@ class WlcOwa:
         self.dlg.selectCriteria.addItems([str(x.name()) for x in
             self.dlg.inputBox.currentLayer().fields() if x.isNumeric()])
 
-    # After "Add selected criteria" pushed, or criteria preset changed
+    
     def populateTables(self):
+        """
+        Populate tables after the desired criteria are selected. 
+        Also adds criteria weights if the "equal weights" preset
+        is selected by the user. 
+        """
+
         selected_criteria = self.dlg.selectCriteria.selectedItems()
         flags = Qt.ItemIsEnabled
         if len(selected_criteria) > 0:
@@ -99,8 +107,13 @@ class WlcOwa:
                 if self.dlg.equalWeightBtn.isChecked():
                     self.dlg.criteriaTable.setItem(current, 1, QTableWidgetItem(str(eqWts)))
 
-    # Populate criteria table given preset conditions
+    
     def criteriaPreset(self):
+        """
+        Populate criteria weights in the selected criteria table
+        if the user selected a preset.
+        """
+
         rows = self.dlg.criteriaTable.rowCount()
         eqWts_btn = round(1/rows,2)
         if self.dlg.equalWeightBtn.isChecked():
@@ -109,8 +122,13 @@ class WlcOwa:
 
         self.dlg.criteriaTable.clearSelection()
 
-    # Populate order table given preset selections
+    
     def orderPreset(self):
+        """
+        Populate order weights in the order weights table if the 
+        user selected a preset (Max/Min/WLC)
+        """
+
         self.dlg.orderTable.clearContents()
         order_rows = self.dlg.orderTable.rowCount()
         wlcWts = round(1/order_rows,2)
@@ -134,8 +152,12 @@ class WlcOwa:
         self.dlg.orderTable.clearSelection()
 
 
-    # Check if user input is correct
     def checker(self):
+        """Check if user inputs are correct. Sum of weights for both 
+        criteria and order needs to be 1. Returns True of conditions
+        are met; returns False otherwise with a thrown error message.
+        """
+        
         weight_checker = 0
         order_checker = 0
 
@@ -164,8 +186,9 @@ class WlcOwa:
         return True
 
 
-    # Calculate OWA score
     def calculateOWA(self):
+        """Calculate the OWA scores based on the user inputs.
+        """
 
         layer = self.dlg.inputBox.currentLayer()
         pr = layer.dataProvider()
