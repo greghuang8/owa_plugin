@@ -1,32 +1,16 @@
-Plugin Builder Results
+OWA/WLC Plugin on QGIS.
 
-Your plugin WlcOwa was created in:
-    C:/Users/waffl/Desktop/MRP/wlcowaplug\wlc_owa_tool
+This plugin calculates the Weighted Linear Combination (WLC) or Ordered Weighted Average (OWA) scores for Multi-Criteria Decision Analysis (MCDA). Note that the procedure for OWA calculation is as follows:
 
-Your QGIS plugin directory is located at:
-    C:/Users/waffl/AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins
+1. Specified criterion weights are applied to values in their respective fields
+2. At each location, the different weighted criteria values are sorted from max to min
+3. Specified order weights are applied to the sorted list in that order, i.e. what you enter at row 1 of the order weights column will be applied to the max value of the sorted list of max to min weighted criteria values at each location
+4. At each location, each ordered weighted criteria value for each criterion selected is summed, and the OWA score is calculated.
 
-What's Next:
+In some other use cases, order weights were applied before criterion weights are applied. Do note that this plugin does **not** calculate OWA scores this way.
 
-  * Copy the entire directory containing your new plugin to the QGIS plugin
-    directory
+To use this plugin by downloading from GitHub, zip the wlc_owa_tool directory in this repo containing the code and install it via the QGIS plugins interface.
 
-  * Compile the resources file using pyrcc5
+The criteria used can be standardized using the "Field Standardizer" plugin also found on this Github page.
 
-  * Run the tests (``make test``)
-
-  * Test the plugin by enabling it in the QGIS plugin manager
-
-  * Customize it by editing the implementation file: ``wlc_owa_tool.py``
-
-  * Create your own custom icon, replacing the default icon.png
-
-  * Modify your user interface by opening WlcOwa_dialog_base.ui in Qt Designer
-
-  * You can use the Makefile to compile your Ui and resource files when
-    you make changes. This requires GNU make (gmake)
-
-For more information, see the PyQGIS Developer Cookbook at:
-http://www.qgis.org/pyqgis-cookbook/index.html
-
-(C) 2011-2018 GeoApt LLC - geoapt.com
+© Gregory Huang 2020
