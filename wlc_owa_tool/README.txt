@@ -9,9 +9,8 @@ Note that the procedure for OWA calculation is as follows:
    to the max value of the sorted list of max to min weighted criteria values at each location
 4. At each location, each ordered weighted criteria value for each criterion selected is summed, and the OWA score is calculated.
 
-In some other use cases, order weights were applied before criterion weights are applied. Do note that this plugin does **not** calculate OWA scores this way.
-
-To use this plugin by downloading from GitHub, zip the wlc_owa_tool directory in this repo containing the code and install it via the QGIS plugins interface.
+In some other use cases, order weights were applied before criterion weights are applied. 
+Do note that this plugin does **not** calculate OWA scores this way.
 
 The criteria used can be standardized using the "Field Standardizer" plugin also found on this Github page.
 
