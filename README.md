@@ -14,6 +14,8 @@ In some other use cases, order weights were applied before criterion weights are
 
 To use this plugin by downloading from GitHub, zip the wlc_owa_tool directory in this repo containing the code and install it via the QGIS plugins interface.
 
+The plugin's landing page at launch is shown in wlc_tool_landing.png
+
 The criteria used can be standardized using the "Field Standardizer" plugin also found on this Github page. 
 
 &copy; Gregory Huang 2020
