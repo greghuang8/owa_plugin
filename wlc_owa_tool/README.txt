@@ -14,4 +14,7 @@ Do note that this plugin does **not** calculate OWA scores this way.
 
 The criteria used can be standardized using the "Field Standardizer" plugin also found on this Github page.
 
+The plugin's landing page at launch is shown in wlc_tool_landing.png
+
+
 © Gregory Huang 2020
